@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Secrets 配置生成器 | AnyRouter</title>
+    <title>GitHub Secrets 配置生成器 | InnerAI</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -397,7 +397,7 @@
     <div class="container">
         <header>
             <h1>Secrets 配置生成器</h1>
-            <p>轻松生成 GitHub Actions 配置文件，一键部署 AnyRouter 自动签到</p>
+            <p>轻松生成 GitHub Actions 配置文件，一键部署 InnerAI 自动签到</p>
         </header>
 
         <!-- Guide Card -->
@@ -555,7 +555,7 @@
                     <div class="form-group" style="margin-bottom: 0;">
                         <label>服务商 (Provider)</label>
                         <select id="provider-${accountCount}">
-                            <option value="anyrouter">anyrouter (默认)</option>
+                            <option value="innerai">innerai (默认)</option>
                             <option value="agentrouter">agentrouter</option>
                         </select>
                     </div>
@@ -666,7 +666,7 @@
             selects.forEach(select => {
                 const currentVal = select.value;
                 select.innerHTML = `
-                    <option value="anyrouter">anyrouter (默认)</option>
+                    <option value="innerai">innerai (默认)</option>
                     <option value="agentrouter">agentrouter</option>
                 `;
                 customIds.forEach(id => {
@@ -761,7 +761,7 @@
                         api_user: apiUser 
                     };
                     if (name) acc.name = name;
-                    if (provider !== 'anyrouter') acc.provider = provider;
+                    if (provider !== 'innerai') acc.provider = provider;
                     accounts.push(acc);
                 }
             });

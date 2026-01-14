@@ -76,8 +76,8 @@ class AppConfig:
 	def load_from_env(cls) -> 'AppConfig':
 		"""从环境变量加载配置"""
 		providers = {
-			'anyrouter': ProviderConfig(
-				name='anyrouter',
+			'innerai': ProviderConfig(
+				name='innerai',
 				domain='https://anyrouter.top',
 				login_path='/login',
 				sign_in_path='/api/user/sign_in',
@@ -137,13 +137,13 @@ class AccountConfig:
 
 	cookies: dict | str
 	api_user: str
-	provider: str = 'anyrouter'
+	provider: str = 'innerai'
 	name: str | None = None
 
 	@classmethod
 	def from_dict(cls, data: dict, index: int) -> 'AccountConfig':
 		"""从字典创建 AccountConfig"""
-		provider = data.get('provider', 'anyrouter')
+		provider = data.get('provider', 'innerai')
 		name = data.get('name', f'Account {index + 1}')
 
 		return cls(cookies=data['cookies'], api_user=data['api_user'], provider=provider, name=name if name else None)
@@ -155,9 +155,9 @@ class AccountConfig:
 
 def load_accounts_config() -> list[AccountConfig] | None:
 	"""从环境变量加载账号配置"""
-	accounts_str = os.getenv('ANYROUTER_ACCOUNTS')
+	accounts_str = os.getenv('INNERAI_ACCOUNTS')
 	if not accounts_str:
-		print('ERROR: ANYROUTER_ACCOUNTS environment variable not found')
+		print('ERROR: INNERAI_ACCOUNTS environment variable not found')
 		return None
 
 	try:

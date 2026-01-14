@@ -35,7 +35,7 @@ class NotificationKit:
 		# MIMEText 需要 'plain' 或 'html'，而不是 'text'
 		mime_subtype = 'plain' if msg_type == 'text' else 'html'
 		msg = MIMEText(content, mime_subtype, 'utf-8')
-		msg['From'] = f'AnyRouter Assistant <{sender}>'
+		msg['From'] = f'InnerAI Assistant <{sender}>'
 		msg['To'] = self.email_to
 		msg['Subject'] = title
 

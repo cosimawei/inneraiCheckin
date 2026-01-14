@@ -1,12 +1,12 @@
-# Any Router 多账号自动签到
+# InnerAI 多账号自动签到
 
-多平台多账号自动签到，理论上支持所有 NewAPI、OneAPI 平台，目前内置支持 Any Router 与 Agent Router，其它可根据文档进行摸索配置。
+多平台多账号自动签到，理论上支持所有 NewAPI、OneAPI 平台，目前内置支持 InnerAI 与 Agent Router，其它可根据文档进行摸索配置。
 
 推荐搭配使用[Auo](https://github.com/millylee/auo)，支持任意 Claude Code Token 切换的工具。
 
 **维护开源不易，如果本项目帮助到了你，请帮忙点个 Star，谢谢!**
 
-用于 Claude Code 中转站 Any Router 网站多账号每日签到，一次 $25，限时注册即送 100 美金，[点击这里注册](https://anyrouter.top/register?aff=gSsN)。业界良心，支持 Claude Sonnet 4.5、GPT-5-Codex、Claude Code 百万上下文（使用 `/model sonnet[1m]` 开启），`gemini-2.5-pro` 模型。
+用于 InnerAI 网站（https://innerai.net/）多账号每日自动签到工具。支持多平台配置，理论上兼容所有 NewAPI、OneAPI 类型的 AI 中转平台。
 
 ## 功能特性
 
@@ -28,7 +28,7 @@
 2. **API User**: 用于请求头的 new-api-user 参数（自己配置其它平台时该值需要注意匹配）
 
 #### 获取 Cookies：
-1. 打开浏览器，访问 https://anyrouter.top/
+1. 打开浏览器，访问 https://innerai.net/
 2. 登录你的账户
 3. 打开开发者工具 (F12)
 4. 切换到 "Application" 或 "存储" 选项卡
@@ -45,7 +45,7 @@
 3. 新建一个名为 `production` 的环境
 4. 点击新建的 `production` 环境进入环境配置页
 5. 点击 "Add environment secret" 创建 secret：
-   - Name: `ANYROUTER_ACCOUNTS`
+   - Name: `INNERAI_ACCOUNTS`
    - Value: 你的多账号配置数据
 
 ### 4. 多账号配置格式
@@ -75,13 +75,13 @@
 **字段说明**：
 - `cookies` (必需)：用于身份验证的 cookies 数据
 - `api_user` (必需)：用于请求头的 new-api-user 参数
-- `provider` (可选)：指定使用的服务商，默认为 `anyrouter`
+- `provider` (可选)：指定使用的服务商，默认为 `innerai`
 - `name` (可选)：自定义账号显示名称，用于通知和日志中标识账号
 
 **默认值说明**：
-- 如果未提供 `provider` 字段，默认使用 `anyrouter`（向后兼容）
+- 如果未提供 `provider` 字段，默认使用 `innerai`（向后兼容）
 - 如果未提供 `name` 字段，会使用 `Account 1`、`Account 2` 等默认名称
-- `anyrouter` 与 `agentrouter` 配置已内置，无需填写
+- `innerai` 与 `agentrouter` 配置已内置，无需填写
 
 接下来获取 cookies 与 api_user 的值。
 
@@ -97,14 +97,14 @@
 
 1. 在你的仓库中，点击 "Actions" 选项卡
 2. 如果提示启用 Actions，请点击启用
-3. 找到 "AnyRouter 自动签到" workflow
+3. 找到 "InnerAI 自动签到" workflow
 4. 点击 "Enable workflow"
 
 ### 6. 测试运行
 
 你可以手动触发一次签到来测试：
 
-1. 在 "Actions" 选项卡中，点击 "AnyRouter 自动签到"
+1. 在 "Actions" 选项卡中，点击 "InnerAI 自动签到"
 2. 点击 "Run workflow" 按钮
 3. 确认运行
 
@@ -112,7 +112,7 @@
 
 ## 执行时间
 
-- 脚本每6小时执行一次（1. action 无法准确触发，基本延时 1~1.5h；2. 目前观测到 anyrouter 的签到是每 24h 而不是零点就可签到）
+- 脚本每6小时执行一次（1. action 无法准确触发，基本延时 1~1.5h；2. 目前观测到 innerai 的签到是每 24h 而不是零点就可签到）
 - 你也可以随时手动触发签到
 
 ## 注意事项
@@ -127,7 +127,7 @@
 
 ### 基础配置（向后兼容）
 
-假设你有两个账号需要签到，不指定 provider 时默认使用 anyrouter：
+假设你有两个账号需要签到，不指定 provider 时默认使用 innerai：
 
 ```json
 [
@@ -148,13 +148,13 @@
 
 ### 多服务商配置
 
-如果你需要同时使用多个服务商（如 anyrouter 和 agentrouter）：
+如果你需要同时使用多个服务商（如 innerai 和 agentrouter）：
 
 ```json
 [
   {
-    "name": "AnyRouter 主账号",
-    "provider": "anyrouter",
+    "name": "InnerAI 主账号",
+    "provider": "innerai",
     "cookies": {
       "session": "abc123session"
     },
@@ -173,7 +173,7 @@
 
 ## 自定义 Provider 配置（可选）
 
-默认情况下，`anyrouter`、`agentrouter` 已内置配置，无需额外设置。如果你需要使用其他服务商，可以通过环境变量 `PROVIDERS` 配置：
+默认情况下，`innerai`、`agentrouter` 已内置配置，无需额外设置。如果你需要使用其他服务商，可以通过环境变量 `PROVIDERS` 配置：
 
 ### 基础配置（仅域名）
 
@@ -209,7 +209,7 @@
 - 不设置或设置为 `null`：直接使用用户提供的 cookies 进行请求（适合无 WAF 保护的网站）
 - 设置为 `"waf_cookies"`：使用 Playwright 打开浏览器获取 WAF cookies 后再进行请求（适合有 WAF 保护的网站）
 
-> 注：`anyrouter` 和 `agentrouter` 已内置默认配置，无需在 `PROVIDERS` 中配置
+> 注：`innerai` 和 `agentrouter` 已内置默认配置，无需在 `PROVIDERS` 中配置
 
 ### 在 GitHub Actions 中配置
 
@@ -244,7 +244,7 @@
 ```
 
 **内置配置说明**：
-- `anyrouter`：
+- `innerai`：
   - `bypass_method: "waf_cookies"`（需要先获取 WAF cookies，然后执行签到）
   - `sign_in_path: "/api/user/sign_in"`
 - `agentrouter`：
@@ -252,12 +252,12 @@
   - `sign_in_path: "/api/user/sign_in"`
 
 **重要提示**：
-- `PROVIDERS` 是可选的，不配置则使用内置的 `anyrouter` 和 `agentrouter`
+- `PROVIDERS` 是可选的，不配置则使用内置的 `innerai` 和 `agentrouter`
 - 自定义的 provider 配置会覆盖同名的默认配置
 
 ## 开启通知
 
-脚本支持多种通知方式，可以通过配置以下环境变量开启，如果 `webhook` 有要求安全设置，例如钉钉，可以在新建机器人时选择自定义关键词，填写 `AnyRouter`。
+脚本支持多种通知方式，可以通过配置以下环境变量开启，如果 `webhook` 有要求安全设置，例如钉钉，可以在新建机器人时选择自定义关键词，填写 `InnerAI`。
 
 ### 邮箱通知(STMP)
 - `EMAIL_USER`: 发件人邮箱地址/STMP登录地址
@@ -317,7 +317,7 @@ uv run playwright install chromium
 
 # 创建 .env 文件并配置（注意：JSON 必须是单行格式）
 # 示例：
-# ANYROUTER_ACCOUNTS=[{"name":"账号1","cookies":{"session":"xxx"},"api_user":"12345"}]
+# INNERAI_ACCOUNTS=[{"name":"账号1","cookies":{"session":"xxx"},"api_user":"12345"}]
 # PROVIDERS={"agentrouter":{"domain":"https://agentrouter.org"}}
 
 # 运行签到脚本

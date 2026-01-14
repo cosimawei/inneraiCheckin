@@ -1,7 +1,7 @@
 [project]
-name = "anyrouter-check-in"
+name = "innerai-check-in"
 version = "0.1.0"
-description = "Anyrouter or newapi system check in"
+description = "InnerAI or newapi system check in"
 requires-python = ">=3.11"
 dependencies = [
   "httpx[http2]>=0.24.0",
