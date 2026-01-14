@@ -155,9 +155,9 @@ class AccountConfig:
 
 def load_accounts_config() -> list[AccountConfig] | None:
 	"""从环境变量加载账号配置"""
-	accounts_str = os.getenv('INNERAI_ACCOUNTS')
+	accounts_str = os.getenv('ANYROUTER_ACCOUNTS')
 	if not accounts_str:
-		print('ERROR: INNERAI_ACCOUNTS environment variable not found')
+		print('ERROR: ANYROUTER_ACCOUNTS environment variable not found')
 		return None
 
 	try:
