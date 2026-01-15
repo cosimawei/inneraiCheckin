@@ -63,7 +63,8 @@ class ProviderConfig:
 
 	def needs_manual_check_in(self) -> bool:
 		"""判断是否需要手动调用签到接口"""
-		return self.bypass_method == 'waf_cookies'
+		# 如果有签到路径，就需要主动调用签到接口
+		return self.sign_in_path is not None
 
 
 @dataclass
